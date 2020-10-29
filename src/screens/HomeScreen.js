@@ -77,7 +77,7 @@ export const HomeScreen = () => {
               </a>
             </div>
 
-            <div className="navbar-menu">
+            <div id="navbarBasicExample" className="navbar-menu">
               {isLogged && (
                 <div className="navbar-start">
                   <a
