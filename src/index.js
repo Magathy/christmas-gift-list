@@ -2,7 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
+import { firebaseConfig } from './firebaseConfig'
+import firebase from 'firebase/app'
+import 'bulma/css/bulma.css'
 
+firebase.initializeApp(firebaseConfig)
 ReactDOM.render(
   <React.StrictMode>
     <App />
