@@ -101,7 +101,11 @@ export const HomeScreen = () => {
 
               {isLogged && (
                 <div className="navbar-end">
-                  {currentUser && <div className="navbar-item">Bienvenue, {currentUser.name}</div>}
+                  {currentUser && (
+                    <div className="navbar-item">
+                      Bienvenue, {currentUser.name}
+                    </div>
+                  )}
                   <div className="navbar-item">
                     <div className="buttons">
                       <a className="button is-light" onClick={logOut}>
