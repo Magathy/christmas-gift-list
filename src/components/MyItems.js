@@ -11,7 +11,7 @@ export const MyItems = ({ user }) => {
 
   return myList.length ? (
     <>
-      <h1 className="title is-1">Les cadeaux que j'ai choisi d'offrir</h1>
+      <h3 className="title is-3">Les cadeaux que j'ai choisi d'offrir</h3>
       <table className="table is-fullwidth">
         <tbody>
           {myList.map((item) => (
@@ -37,6 +37,6 @@ export const MyItems = ({ user }) => {
       </table>
     </>
   ) : (
-    <h1 className="title is-1">Pas encore de cadeaux choisis</h1>
+    <h3 className="title is-3">Pas encore de cadeaux choisis</h3>
   )
 }

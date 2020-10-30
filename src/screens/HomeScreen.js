@@ -22,6 +22,7 @@ export const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [currentUser, setCurrentUser] = useState(null)
   const [currentNav, setCurrentNav] = useState(navOptions.myList)
+  const [burgerActive, setBurgerActive] = useState(false)
 
   const getAuthData = (user) => {
     const isAuthorized = entitiesArray
@@ -69,10 +70,13 @@ export const HomeScreen = () => {
               {isLogged && (
                 <a
                   role="button"
-                  className="navbar-burger burger"
+                  className={classNames('navbar-burger', 'burger', {
+                    'is-active': burgerActive,
+                  })}
                   aria-label="menu"
                   aria-expanded="false"
                   data-target="navbarBasicExample"
+                  onClick={() => setBurgerActive(!burgerActive)}
                 >
                   <span aria-hidden="true"></span>
                   <span aria-hidden="true"></span>
@@ -81,7 +85,12 @@ export const HomeScreen = () => {
               )}
             </div>
 
-            <div id="navbarBasicExample" className="navbar-menu">
+            <div
+              id="navbarBasicExample"
+              className={classNames('navbar-menu', {
+                'is-active': burgerActive,
+              })}
+            >
               {isLogged && (
                 <div className="navbar-start">
                   <a

@@ -28,10 +28,11 @@ export const OtherLists = ({ user }) => {
 
   return (
     <>
-      <h1 className="title is-1">Listes des autres personnes</h1>
+      <h3 className="title is-3">Listes des autres personnes</h3>
+      <br />
       {Object.entries(lists).map(([key, values]) => (
         <Fragment key={key}>
-          <h3 className="title is-3">Liste de {key}</h3>
+          <h3 className="subtitle">Liste de {key}</h3>
           <table className="table is-fullwidth">
             <tbody>
               {values.map((item) => (
