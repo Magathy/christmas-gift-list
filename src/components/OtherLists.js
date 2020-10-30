@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { dbRefs, useDatabase } from '../hooks/useDatabase'
 import { groupBy, sortBy, prop, dissoc, pipe } from 'ramda'
-import {ItemDisplay} from "./ItemDisplay";
+import { ItemDisplay } from './ItemDisplay'
 
 export const unchoseItem = (item) => pipe(dissoc('uid'), dissoc('taken'))(item)
 

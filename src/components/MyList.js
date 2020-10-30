@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Field } from 'react-final-form'
 import { dbRefs, useDatabase } from '../hooks/useDatabase'
 import styled from 'styled-components'
-import {ItemDisplay} from "./ItemDisplay";
+import { ItemDisplay } from './ItemDisplay'
 
 const Container = styled.div`
   margin-bottom: 30px;
@@ -66,7 +66,9 @@ export const MyList = ({ user }) => {
           <tbody>
             {myItems.map((item) => (
               <tr key={item.uid}>
-                <td><ItemDisplay item={item} /></td>
+                <td>
+                  <ItemDisplay item={item} />
+                </td>
                 <td>
                   <button
                     onClick={() => removeItem(item.uid)}
