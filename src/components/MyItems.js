@@ -37,6 +37,6 @@ export const MyItems = ({ user }) => {
       </table>
     </>
   ) : (
-    <h1 className="title is-1">Pas encore de cadeaux choisi</h1>
+    <h1 className="title is-1">Pas encore de cadeaux choisis</h1>
   )
 }
