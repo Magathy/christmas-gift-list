@@ -7,10 +7,12 @@ import { toLower } from 'ramda'
 import { MyList } from '../components/MyList'
 import { OtherLists } from '../components/OtherLists'
 import classNames from 'classnames'
+import {MyItems} from "../components/MyItems";
 
 const navOptions = {
   myList: 'myList',
   otherLists: 'otherLists',
+  myItems: 'myItems',
 }
 
 export const HomeScreen = () => {
@@ -64,7 +66,7 @@ export const HomeScreen = () => {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              <a
+              {isLogged && (<a
                 role="button"
                 className="navbar-burger burger"
                 aria-label="menu"
@@ -74,7 +76,7 @@ export const HomeScreen = () => {
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-              </a>
+              </a>)}
             </div>
 
             <div id="navbarBasicExample" className="navbar-menu">
@@ -86,7 +88,7 @@ export const HomeScreen = () => {
                     })}
                     onClick={() => setCurrentNav(navOptions.myList)}
                   >
-                    Ma liste
+                    Ma liste d'idées
                   </a>
                   <a
                     className={classNames('navbar-item', {
@@ -94,18 +96,21 @@ export const HomeScreen = () => {
                     })}
                     onClick={() => setCurrentNav(navOptions.otherLists)}
                   >
-                    Les autres listes
+                    Listes des autres
+                  </a>
+                  <a
+                    className={classNames('navbar-item', {
+                      'is-active': currentNav === navOptions.myItems,
+                    })}
+                    onClick={() => setCurrentNav(navOptions.myItems)}
+                  >
+                    Les cadeaux à offrir
                   </a>
                 </div>
               )}
 
               {isLogged && (
                 <div className="navbar-end">
-                  {currentUser && (
-                    <div className="navbar-item">
-                      Bienvenue, {currentUser.name}
-                    </div>
-                  )}
                   <div className="navbar-item">
                     <div className="buttons">
                       <a className="button is-light" onClick={logOut}>
@@ -126,9 +131,9 @@ export const HomeScreen = () => {
             ) : isLogged ? (
               currentNav === navOptions.myList ? (
                 <MyList user={currentUser} />
-              ) : (
-                <OtherLists />
-              )
+              ) : currentNav === navOptions.otherLists ? (
+                <OtherLists user={currentUser} />
+              ) : <MyItems user={currentUser} />
             ) : (
               <Login login={login} errorMessage={errorMessage} />
             )}
