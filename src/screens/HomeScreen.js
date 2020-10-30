@@ -7,7 +7,7 @@ import { toLower } from 'ramda'
 import { MyList } from '../components/MyList'
 import { OtherLists } from '../components/OtherLists'
 import classNames from 'classnames'
-import {MyItems} from "../components/MyItems";
+import { MyItems } from '../components/MyItems'
 
 const navOptions = {
   myList: 'myList',
@@ -66,17 +66,19 @@ export const HomeScreen = () => {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              {isLogged && (<a
-                role="button"
-                className="navbar-burger burger"
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navbarBasicExample"
-              >
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>)}
+              {isLogged && (
+                <a
+                  role="button"
+                  className="navbar-burger burger"
+                  aria-label="menu"
+                  aria-expanded="false"
+                  data-target="navbarBasicExample"
+                >
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              )}
             </div>
 
             <div id="navbarBasicExample" className="navbar-menu">
@@ -133,7 +135,9 @@ export const HomeScreen = () => {
                 <MyList user={currentUser} />
               ) : currentNav === navOptions.otherLists ? (
                 <OtherLists user={currentUser} />
-              ) : <MyItems user={currentUser} />
+              ) : (
+                <MyItems user={currentUser} />
+              )
             ) : (
               <Login login={login} errorMessage={errorMessage} />
             )}

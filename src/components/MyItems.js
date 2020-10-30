@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { dbRefs, useDatabase } from '../hooks/useDatabase'
-import {unchoseItem} from "./OtherLists";
+import { unchoseItem } from './OtherLists'
 
 export const MyItems = ({ user }) => {
   const { updateEntity: updateItem, entitiesArray } = useDatabase(dbRefs.items)

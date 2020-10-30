@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { dbRefs, useDatabase } from '../hooks/useDatabase'
 import { groupBy, sortBy, prop, dissoc, pipe } from 'ramda'
+import {ItemDisplay} from "./ItemDisplay";
 
 export const unchoseItem = (item) => pipe(dissoc('uid'), dissoc('taken'))(item)
 
@@ -9,11 +10,14 @@ export const OtherLists = ({ user }) => {
 
   console.log(entitiesArray)
 
-  const lists = dissoc(user.name, Object.entries(
-    groupBy(prop('userName'), sortBy(prop('userName'), entitiesArray))
-  ).reduce((acc, [key, value]) => {
-    return { ...acc, [key]: sortBy(prop('name'), value) }
-  }, {}))
+  const lists = dissoc(
+    user.name,
+    Object.entries(
+      groupBy(prop('userName'), sortBy(prop('userName'), entitiesArray))
+    ).reduce((acc, [key, value]) => {
+      return { ...acc, [key]: sortBy(prop('name'), value) }
+    }, {})
+  )
 
   console.log(lists)
 
@@ -33,17 +37,7 @@ export const OtherLists = ({ user }) => {
               {values.map((item) => (
                 <tr key={item.uid}>
                   <td>
-                    {item.name.includes('http') ? (
-                      <a
-                        href={item.name}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Lien vers {item.name.split('://')[1].split('/')[0]}
-                      </a>
-                    ) : (
-                      item.name
-                    )}
+                    <ItemDisplay item={item} />
                   </td>
                   <td>
                     {item.taken ? (
