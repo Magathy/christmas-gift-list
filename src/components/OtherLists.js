@@ -8,8 +8,6 @@ export const unchoseItem = (item) => pipe(dissoc('uid'), dissoc('taken'))(item)
 export const OtherLists = ({ user }) => {
   const { updateEntity: updateItem, entitiesArray } = useDatabase(dbRefs.items)
 
-  console.log(entitiesArray)
-
   const lists = dissoc(
     user.name,
     Object.entries(
@@ -19,8 +17,6 @@ export const OtherLists = ({ user }) => {
     }, {})
   )
 
-  console.log(lists)
-
   const choseItem = (item) => {
     const newItem = dissoc('uid', item)
     return { ...newItem, taken: { userUid: user.uid, userName: user.name } }
@@ -28,7 +24,6 @@ export const OtherLists = ({ user }) => {
 
   return (
     <>
-      <h3 className="title is-3">Listes des autres personnes</h3>
       <br />
       {Object.entries(lists).map(([key, values]) => (
         <Fragment key={key}>

@@ -8,6 +8,11 @@ import { MyList } from '../components/MyList'
 import { OtherLists } from '../components/OtherLists'
 import classNames from 'classnames'
 import { MyItems } from '../components/MyItems'
+import styled from 'styled-components'
+
+const Container = styled.section`
+  background-color: #b11e31 !important;
+`
 
 const navOptions = {
   myList: 'myList',
@@ -59,7 +64,7 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <section className="hero is-danger is-fullheight">
+      <Container className="hero is-success is-fullheight">
         <div className="hero-head">
           <nav
             className="navbar"
@@ -152,7 +157,7 @@ export const HomeScreen = () => {
             )}
           </div>
         </div>
-      </section>
+      </Container>
     </>
   )
 }

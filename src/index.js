@@ -5,6 +5,10 @@ import reportWebVitals from './reportWebVitals'
 import { firebaseConfig } from './firebaseConfig'
 import firebase from 'firebase/app'
 import 'bulma/css/bulma.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faLink, faPlus, faMinus, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faLink, faPlus, faMinus, faExternalLinkAlt)
 
 firebase.initializeApp(firebaseConfig)
 ReactDOM.render(

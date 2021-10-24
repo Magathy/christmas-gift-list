@@ -1,14 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+
+const Link = styled.a`
+	color: #1d72aa !important;
+  text-decoration: underline;
+`
 
 export const ItemDisplay = ({ item }) =>
-  item.name.includes('http') ? (
-    <a
-      href={item.name.split(' ').find((splitted) => splitted.includes('http'))}
+    item.link ? <Link
+      href={item.link}
       target="_blank"
       rel="noopener noreferrer"
     >
-      Lien vers {item.name.split('://')[1].split('/')[0]}
-    </a>
-  ) : (
-    item.name
-  )
+      <FontAwesomeIcon icon="external-link-alt" /> {item.name}
+    </Link> : item.name

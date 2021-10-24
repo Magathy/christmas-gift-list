@@ -4,6 +4,9 @@
   "author": "Arnaud Gathy",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "axios": "^0.21.0",
     "bulma": "^0.9.1",
     "bulma-extensions": "^6.2.7",

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { dbRefs, useDatabase } from '../hooks/useDatabase'
 import { unchoseItem } from './OtherLists'
+import {ItemDisplay} from "./ItemDisplay"
 
 export const MyItems = ({ user }) => {
   const { updateEntity: updateItem, entitiesArray } = useDatabase(dbRefs.items)
@@ -11,24 +12,23 @@ export const MyItems = ({ user }) => {
 
   return myList.length ? (
     <>
-      <h3 className="title is-3">Les cadeaux que j'ai choisi d'offrir</h3>
       <table className="table is-fullwidth">
         <tbody>
           {myList.map((item) => (
             <tr>
               <td>Pour {item.userName}</td>
-              <td>{item.name}</td>
+              <td><ItemDisplay item={item} /></td>
               <td>
                 <button
-                  onClick={() =>
-                    updateItem({
-                      uid: item.uid,
-                      value: unchoseItem(item),
-                    })
-                  }
-                  className="button is-danger is-small"
+                    onClick={() =>
+                        updateItem({
+                          uid: item.uid,
+                          value: unchoseItem(item),
+                        })
+                    }
+                    className="button is-danger is-outlined is-rounded is-small"
                 >
-                  Annuler mon choix
+                  <span className="icon is-small">❌</span>
                 </button>
               </td>
             </tr>
