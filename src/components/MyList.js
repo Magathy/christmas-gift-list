@@ -167,7 +167,7 @@ export const MyList = ({ user }) => {
       )}
       {!!otherPeopleItems.length && (
         <>
-          <h4 className="title is-4">Elements ajouté chez les autres</h4>
+          <h4 className="title is-4">Elements ajoutés chez les autres</h4>
           <ItemTableList
             items={otherPeopleItems}
             removeItem={handleRemoveItem}
