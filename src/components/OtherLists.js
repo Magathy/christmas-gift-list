@@ -33,7 +33,7 @@ export const OtherLists = ({ user }) => {
               {values.map((item) => (
                 <tr key={item.uid}>
                   <td>
-                    <ItemDisplay item={item} />
+                    <ItemDisplay item={item} hasTag />
                   </td>
                   <td>
                     {item.taken ? (
