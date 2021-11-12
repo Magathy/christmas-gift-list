@@ -14,7 +14,7 @@ export const ItemDisplay = ({ item, isToSomeone, hasTag }) => (
     ) : (
       hasTag &&
       item.addedByName &&
-      item.addedByName !== item.userId && (
+      item.addedByUid !== item.userId && (
         <span className="tag is-light">
           {isToSomeone
             ? `Pour ${item.userName}`
