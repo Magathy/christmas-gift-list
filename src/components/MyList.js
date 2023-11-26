@@ -20,7 +20,6 @@ const Element = styled.div`
 `
 
 export const MyList = ({ user }) => {
-  const [hasLink, setHasLink] = useState(false)
   const {
     addEntity: addItem,
     removeEntity: removeItem,
@@ -45,7 +44,7 @@ export const MyList = ({ user }) => {
 
   const onSubmit = ({ itemName, itemLink, targetListUserUid }) => {
     const targerUser = JSON.parse(targetListUserUid)
-    const isLinkValid = hasLink && itemLink && itemLink.includes('http')
+    const isLinkValid = itemLink && itemLink.includes('http')
     const addAction = addItem({
       userId: targerUser.uid,
       userName: targerUser.name,
@@ -54,12 +53,7 @@ export const MyList = ({ user }) => {
       addedByUid: user?.uid,
       addedByName: user?.name,
     })
-    setHasLink(false)
     return addAction
-  }
-
-  const toggleLink = () => {
-    setHasLink((current) => !current)
   }
 
   return (
@@ -87,44 +81,26 @@ export const MyList = ({ user }) => {
                       )}
                     </Field>
                   </div>
-                  <div className="control">
-                    <a
-                      className={`button ${hasLink ? 'is-danger' : 'is-info'}`}
-                      onClick={toggleLink}
-                    >
-                      {hasLink ? (
-                        <span>
-                          <FontAwesomeIcon icon="minus" /> Lien
-                        </span>
-                      ) : (
-                        <span>
-                          <FontAwesomeIcon icon="plus" /> Lien
-                        </span>
-                      )}
-                    </a>
-                  </div>
                 </div>
-                {hasLink && (
-                  <div className="field has-addons">
-                    <p className="control">
-                      <a className="button is-static">
-                        <FontAwesomeIcon icon="link" />
-                      </a>
-                    </p>
-                    <p className="control is-expanded">
-                      <Field name="itemLink">
-                        {({ input }) => (
-                          <input
-                            className="input"
-                            type="text"
-                            placeholder="Lien vers l'élément"
-                            {...input}
-                          />
-                        )}
-                      </Field>
-                    </p>
-                  </div>
-                )}
+                <div className="field has-addons">
+                  <p className="control">
+                    <a className="button is-static">
+                      <FontAwesomeIcon icon="link" />
+                    </a>
+                  </p>
+                  <p className="control is-expanded">
+                    <Field name="itemLink">
+                      {({ input }) => (
+                        <input
+                          className="input"
+                          type="text"
+                          placeholder="Lien vers l'élément"
+                          {...input}
+                        />
+                      )}
+                    </Field>
+                  </p>
+                </div>
               </FieldsContainer>
               <Element className="field">
                 <label htmlFor="target" className="label has-text-white">
